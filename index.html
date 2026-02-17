@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zero to 60 · Propuesta Estratégica</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
+                        mono: ['Space Grotesk', 'monospace']
+                    },
+                    colors: {
+                        bg: '#02040a',
+                        surface: '#0f172a',
+                        accent: '#6366f1',
+                        accentHover: '#4f46e5',
+                        textMuted: '#94a3b8'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #02040a;
+            color: #cbd5e1;
+            overflow: hidden;
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+        #deck {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* DIAPOSITIVAS (APILADAS) */
+        .slide {
+            position: absolute;
+            /* Clave: apilados uno sobre otro */
+            inset: 0;
+            /* Ocupan todo el espacio */
+            opacity: 0;
+            /* Invisibles por defecto */
+            pointer-events: none;
+            /* No se puede hacer click si no se ven */
+            transition: opacity 0.6s ease-in-out;
+            /* Transición suave */
+            z-index: 0;
+
+            /* Flex para centrar contenido */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2.5rem;
+            /* px-10 equivalente */
+
+            /* Scroll si es necesario (slide 8) */
+            overflow-y: auto;
+        }
+
+        /* DIAPOSITIVA ACTIVA */
+        .slide.active {
+            opacity: 1;
+            pointer-events: auto;
+            /* Reactiva clicks */
+            z-index: 10;
+        }
+
+        /* ANIMACIÓN DE CONTENIDO INTERNO */
+        .slide-content {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out 0.2s;
+            /* Delay pequeño para que entre después del fondo */
+        }
+
+        .slide.active .slide-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Scrollbar personalizada */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body class="font-body h-screen w-screen relative">
+
+    <!-- PROGRESS BAR -->
+    <div class="absolute top-0 left-0 h-1 bg-accent transition-all duration-300 z-50" id="progress" style="width: 0%">
+    </div>
+
+    <main id="deck">
+
+        <!-- SLIDE 1 -->
+        <section class="slide active">
+            <div class="max-w-4xl text-center slide-content">
+                <p class="font-mono text-accent uppercase tracking-widest text-xs mb-6">El Solar Creative Group × Juan y
+                    Darío</p>
+                <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-8 tracking-tight">Zero to 60</h1>
+                <p class="text-lg md:text-xl text-textMuted leading-relaxed max-w-2xl mx-auto">
+                    Propuesta estratégica para lanzar, validar y escalar un modelo de Sweepstake
+                    con control de riesgo, foco en revenue y visión de largo plazo.
+                </p>
+            </div>
+        </section>
+
+        <!-- SLIDE 2 -->
+        <section class="slide">
+            <div class="max-w-3xl slide-content">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-8 tracking-tight">El momento del proyecto</h2>
+                <p class="text-lg md:text-xl text-textMuted leading-relaxed mb-6">
+                    Zero to 60 nace de una decisión consciente: reconstruir el modelo desde una base sólida,
+                    capitalizando aprendizajes reales y eliminando arrastres del pasado.
+                </p>
+                <p class="text-lg md:text-xl text-textMuted leading-relaxed">
+                    No se trata de relanzar lo anterior, sino de diseñar correctamente el sistema
+                    que permita crecer sin fricción y escalar con control.
+                </p>
+            </div>
+        </section>
+
+        <!-- SLIDE 3 -->
+        <section class="slide">
+            <div class="max-w-3xl slide-content">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-8 tracking-tight">Qué se necesita para que Zero
+                    to 60 exista</h2>
+                <p class="text-lg md:text-xl text-textMuted leading-relaxed mb-6">
+                    Antes de acelerar, es necesario construir fundamentos claros:
+                    posicionamiento, sistema de conversión, infraestructura técnica
+                    y una lógica coherente de toma de decisiones.
+                </p>
+                <p
+                    class="text-lg md:text-xl text-white font-medium border-l-4 border-accent pl-6 py-2 bg-surface/30 rounded-r-lg">
+                    El crecimiento sin estructura solo amplifica errores.
+                    Aquí el sistema se construye antes que el volumen.
+                </p>
+            </div>
+        </section>
+
+        <!-- SLIDE 4 -->
+        <section class="slide">
+            <div class="max-w-3xl slide-content">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-8 tracking-tight">El primer Sweepstake</h2>
+                <p class="text-lg md:text-xl text-textMuted leading-relaxed mb-8">
+                    El primer sweepstake no se plantea como un evento aislado,
+                    sino como una validación integral del sistema completo:
+                    pagos, compliance, conversión, recompra y comportamiento real.
+                </p>
+                <p class="text-2xl md:text-3xl italic text-white font-serif opacity-90">
+                    “Más que el premio, importa todo lo que se prueba alrededor.”
+                </p>
+            </div>
+        </section>
+
+        <!-- SLIDE 5 -->
+        <section class="slide">
+            <div class="max-w-5xl slide-content w-full">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-12 tracking-tight">Control antes de agresividad
+                </h2>
+                <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+                    <div
+                        class="bg-surface p-8 rounded-xl border border-white/5 hover:border-accent/30 transition-colors">
+                        <h3 class="text-white font-bold mb-3 text-lg">Riesgo reducido</h3>
+                        <p class="text-textMuted text-sm md:text-base leading-relaxed">Premio inicial pensado para
+                            aprender rápido sin comprometer capital excesivo.</p>
+                    </div>
+                    <div
+                        class="bg-surface p-8 rounded-xl border border-white/5 hover:border-accent/30 transition-colors">
+                        <h3 class="text-white font-bold mb-3 text-lg">Validación real</h3>
+                        <p class="text-textMuted text-sm md:text-base leading-relaxed">Pagos, legalidad y conversión
+                            probados con usuarios reales.</p>
+                    </div>
+                    <div
+                        class="bg-surface p-8 rounded-xl border border-white/5 hover:border-accent/30 transition-colors">
+                        <h3 class="text-white font-bold mb-3 text-lg">Visión de escala</h3>
+                        <p class="text-textMuted text-sm md:text-base leading-relaxed">Cada paso financia el siguiente.
+                            Todo se construye para escalar.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 6 -->
+        <section class="slide">
+            <div class="max-w-4xl slide-content">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-10 tracking-tight">Cómo funciona el sistema</h2>
+                <div class="space-y-6">
+                    <p class="text-lg md:text-xl text-textMuted leading-relaxed">
+                        El usuario llega desde tráfico pago u orgánico, entiende la propuesta,
+                        compra entradas y entra en una lógica de recompra.
+                    </p>
+                    <div class="h-px w-20 bg-accent/50"></div>
+                    <p class="text-lg md:text-xl text-textMuted leading-relaxed">
+                        Cada interacción se convierte en <span class="text-white font-medium">data accionable</span>
+                        para optimizar decisiones futuras.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 7 -->
+        <section class="slide">
+            <div class="max-w-3xl slide-content">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-8 tracking-tight">El rol de El Solar</h2>
+                <p class="text-lg md:text-xl text-textMuted mb-6 leading-relaxed">
+                    El Solar actúa como partner estratégico, traduciendo visión en un sistema digital real,
+                    operando funnel, promociones, infraestructura y crecimiento.
+                </p>
+                <div class="bg-accent/10 border border-accent/20 p-6 rounded-xl">
+                    <p class="text-lg md:text-xl text-white font-medium">
+                        No ejecutamos tareas sueltas: diseñamos y operamos el sistema completo.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 8 (EXPANDIDO) -->
+        <section class="slide">
+            <div class="max-w-6xl slide-content w-full">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">Fase de instalación: qué se
+                    construye</h2>
+                <p class="text-lg md:text-xl text-textMuted mb-10 max-w-4xl leading-relaxed">
+                    Aquí se construye el sistema completo que permitirá validar, vender y escalar
+                    el modelo de Sweepstake sin fricción ni improvisación.
+                </p>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-surface p-6 rounded-xl border border-white/5">
+                        <strong class="text-white block mb-2 text-lg">Estrategia general</strong>
+                        <p class="text-textMuted text-sm leading-relaxed">Narrativa, lógica económica y estructura de
+                            decisiones.</p>
+                    </div>
+                    <div class="bg-surface p-6 rounded-xl border border-white/5">
+                        <strong class="text-white block mb-2 text-lg">Branding inicial</strong>
+                        <p class="text-textMuted text-sm leading-relaxed">Coherencia visual y percepción de legitimidad
+                            para Zero to 60.</p>
+                    </div>
+                    <div class="bg-surface p-6 rounded-xl border border-white/5">
+                        <strong class="text-white block mb-2 text-lg">Funnel completo</strong>
+                        <p class="text-textMuted text-sm leading-relaxed">Conversión, urgencia y estrategias de recompra
+                            automatizadas.</p>
+                    </div>
+                    <div class="bg-surface p-6 rounded-xl border border-white/5">
+                        <strong class="text-white block mb-2 text-lg">Shopify + contingencias</strong>
+                        <p class="text-textMuted text-sm leading-relaxed">Infraestructura estable y plataformas espejo
+                            para seguridad.</p>
+                    </div>
+                    <div class="bg-surface p-6 rounded-xl border border-white/5">
+                        <strong class="text-white block mb-2 text-lg">Publicidad con data</strong>
+                        <p class="text-textMuted text-sm leading-relaxed">Reinterpretación de aprendizajes históricos
+                            para optimizar pauta.</p>
+                    </div>
+                    <div class="bg-surface p-6 rounded-xl border border-white/5">
+                        <strong class="text-white block mb-2 text-lg">Sistema de datos</strong>
+                        <p class="text-textMuted text-sm leading-relaxed">Lectura e interpretación para decisiones
+                            reales.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 9 -->
+        <section class="slide">
+            <div class="max-w-5xl slide-content w-full">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-12 tracking-tight">Roadmap 90 días</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-surface p-8 rounded-xl border border-white/5 relative group">
+                        <div class="absolute inset-0 bg-accent/5 rounded-xl group-hover:bg-accent/10 transition-colors">
+                        </div>
+                        <h3 class="text-white font-bold mb-2 text-2xl relative">Mes 1</h3>
+                        <p class="text-textMuted relative">Instalación y primeras ventas.</p>
+                    </div>
+                    <div class="bg-surface p-8 rounded-xl border border-white/5 relative group">
+                        <div class="absolute inset-0 bg-accent/5 rounded-xl group-hover:bg-accent/10 transition-colors">
+                        </div>
+                        <h3 class="text-white font-bold mb-2 text-2xl relative">Mes 2</h3>
+                        <p class="text-textMuted relative">Optimización y aceleración.</p>
+                    </div>
+                    <div class="bg-surface p-8 rounded-xl border border-white/5 relative group">
+                        <div
+                            class="absolute inset-0 bg-accent/10 rounded-xl group-hover:bg-accent/20 transition-colors">
+                        </div>
+                        <h3 class="text-white font-bold mb-2 text-2xl relative text-accent">Mes 3</h3>
+                        <p class="text-textMuted relative">Transición a performance.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 10: TRANSICIÓN MODELO -->
+        <section class="slide">
+            <div class="max-w-4xl slide-content">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-8 tracking-tight">
+                    Por qué este modelo se paga solo
+                </h2>
+                <p class="text-lg md:text-xl text-textMuted leading-relaxed mb-6">
+                    Todo lo que se construye en la fase de instalación tiene un único objetivo:
+                    que el sistema empiece a generar ventas reales lo antes posible.
+                </p>
+                <p class="text-lg md:text-xl text-textMuted leading-relaxed mb-6">
+                    Cuando el funnel, la infraestructura, la pauta y la lectura de datos funcionan
+                    como un sistema integrado, el crecimiento deja de depender de inversión externa constante.
+                </p>
+                <div class="bg-surface/40 border-l-4 border-accent p-6 rounded-r-xl">
+                    <p class="text-lg md:text-xl text-white font-medium">
+                        El objetivo es que El Solar deje de ser un costo fijo
+                        y pase a ser un socio directamente alineado a resultados.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SLIDE 11: MODELO ECONOMICO FASE 1 -->
+        <section class="slide">
+            <div class="max-w-4xl slide-content w-full">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-10 tracking-tight">
+                    Modelo económico · Fase 1
+                </h2>
+
+                <div class="bg-surface p-8 rounded-2xl border border-white/10">
+                    <h3 class="text-2xl font-bold text-white mb-4">
+                        Fee de instalación
+                    </h3>
+                    <p class="text-lg text-textMuted mb-6 leading-relaxed">
+                        Durante los primeros 3 meses, se establece un fee fijo para cubrir el trabajo
+                        intensivo de construcción, validación y estabilización del sistema.
+                    </p>
+
+                    <ul class="space-y-3 text-textMuted text-lg">
+                        <li>• Inversión: <span class="text-white font-medium">USD 1.950 / mes</span></li>
+                        <li>• Duración: <span class="text-white font-medium">3 meses</span></li>
+                        <li>• Comisión: <span class="text-white font-medium">No aplica</span></li>
+                    </ul>
+
+                    <div class="mt-6 bg-accent/10 border border-accent/20 p-5 rounded-xl">
+                        <p class="text-white text-lg font-medium">
+                            Esta fase existe para reducir riesgo, evitar errores críticos
+                            y permitir que el sistema llegue a un punto de tracción real.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SLIDE 12: MODELO ECONOMICO FASE 2 -->
+        <section class="slide">
+            <div class="max-w-4xl slide-content w-full">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-10 tracking-tight">
+                    Modelo económico · Fase 2
+                </h2>
+
+                <div class="bg-gradient-to-br from-surface to-accent/5 p-8 rounded-2xl border border-accent/40">
+                    <h3 class="text-2xl font-bold text-white mb-4">
+                        Modelo a comisión
+                    </h3>
+                    <p class="text-lg text-textMuted mb-6 leading-relaxed">
+                        Una vez el proyecto alcanza una facturación mínima mensual de
+                        <span class="text-white font-medium">USD 10.000</span>,
+                        el modelo cambia automáticamente.
+                    </p>
+
+                    <ul class="space-y-3 text-textMuted text-lg">
+                        <li>• Fee fijo mensual: <span class="text-white font-medium">Se elimina</span></li>
+                        <li>• Comisión: <span class="text-white font-medium">10% sobre ventas mensuales</span></li>
+                        <li>• Incentivo: <span class="text-white font-medium">Crecimiento y escalamiento</span></li>
+                    </ul>
+
+                    <div class="mt-6 bg-surface/60 border border-white/10 p-5 rounded-xl">
+                        <p class="text-white text-lg font-medium">
+                            A partir de este punto, El Solar solo gana si el proyecto crece.
+                            Los incentivos quedan completamente alineados.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 13: PRÓXIMOS PASOS (CIERRE) -->
+        <section class="slide">
+            <div class="max-w-3xl text-center slide-content w-full">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-10 tracking-tight">Próximos pasos</h2>
+                <div class="flex flex-col gap-5 max-w-md mx-auto">
+                    <a href="https://buy.stripe.com/cNieV65S9b0F3vIfbddjO0a" target="_blank"
+                        class="bg-accent hover:bg-accentHover text-white py-5 px-6 rounded-xl font-bold text-lg transition-all shadow-lg shadow-accent/20">
+                        Aceptar propuesta e iniciar
+                    </a>
+                    <a href="https://tidycal.com/elsolar/go-no-go-sync" target="_blank"
+                        class="border border-white/20 hover:border-white/40 text-white py-5 px-6 rounded-xl font-medium text-lg transition-all">
+                        Agendar llamada Go / No-Go
+                    </a>
+                    <a href="https://wa.me/message/S3Q3T7ODJH6IN1" target="_blank"
+                        class="underline text-textMuted hover:text-white transition-colors py-2">
+                        Hablar ahora por WhatsApp
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- CONTROLS -->
+    <div class="fixed bottom-6 right-6 flex gap-3 z-50">
+        <button id="prevBtn" onclick="prevSlide()"
+            class="w-12 h-12 rounded-full border border-white/10 bg-surface/80 text-white hover:bg-white/10 flex items-center justify-center backdrop-blur-sm transition-all disabled:opacity-30 disabled:cursor-not-allowed">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+        </button>
+        <button id="nextBtn" onclick="nextSlide()"
+            class="w-12 h-12 rounded-full border border-white/10 bg-surface/80 text-white hover:bg-accent hover:border-accent flex items-center justify-center backdrop-blur-sm transition-all disabled:opacity-30 disabled:cursor-not-allowed">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+        </button>
+    </div>
+
+    <!-- PAGE INDICATOR -->
+    <div
+        class="fixed bottom-6 left-6 text-textMuted font-mono text-sm z-50 bg-surface/80 px-4 py-2 rounded-full border border-white/5 backdrop-blur-sm">
+        <span id="current-slide">1</span> / <span id="total-slides">13</span>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const progress = document.getElementById('progress');
+        const currentSlideEl = document.getElementById('current-slide');
+        const totalSlidesEl = document.getElementById('total-slides');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let i = 0;
+
+        // Init
+        totalSlidesEl.textContent = slides.length;
+        updateUI();
+
+        function updateUI() {
+            progress.style.width = ((i + 1) / slides.length * 100) + '%';
+            currentSlideEl.textContent = i + 1;
+            prevBtn.disabled = i === 0;
+            nextBtn.disabled = i === slides.length - 1;
+        }
+
+        function show(n) {
+            slides.forEach(s => s.classList.remove('active'));
+            slides[n].classList.add('active');
+            updateUI();
+        }
+
+        function nextSlide() {
+            if (i < slides.length - 1) { i++; show(i); }
+        }
+
+        function prevSlide() {
+            if (i > 0) { i--; show(i); }
+        }
+
+        // Keyboard
+        document.addEventListener('keydown', e => {
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') nextSlide();
+            if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prevSlide();
+        });
+
+        // Touch Swipe
+        let touchstartX = 0;
+        let touchendX = 0;
+        document.addEventListener('touchstart', e => touchstartX = e.changedTouches[0].screenX);
+        document.addEventListener('touchend', e => {
+            touchendX = e.changedTouches[0].screenX;
+            if (touchendX < touchstartX - 50) nextSlide();
+            if (touchendX > touchstartX + 50) prevSlide();
+        });
+    </script>
+
+</body>
+
+</html>
